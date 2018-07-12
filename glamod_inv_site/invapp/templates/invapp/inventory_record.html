@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load invapp_filters %}
+
+{% block title %}
+    Record: {{ record }}
+    [<a href="/invapp/export/xml/{{ record.pk }}.xml">GEMINI2 / ISO19139 (xml)</a>]
+{% endblock %}
+
+{% block content %}
+    <h2>Details</h2>
+
+<table class="table table-sm table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    {% for field in record|get_fields %}
+    <tr>
+        <th scope="row">{{ field.0 }}</th>
+        <td>
+            {% if field.1.url %}
+            <a href="{{ field.1.url }}">{{ field.1.value }}</a>
+            {% elif field.1.pk_url_list %}
+
+                {% for item in field.1.pk_url_list %}
+
+                    {% if item.1 %}
+                    <a href="{{ item.1 }}" data-toggle="tooltip" title="{{ item.2 }}">{{ item.0 }}</a>&nbsp;
+                    {% else %}
+                    <span data-toggle="tooltip" title="{{ item.2 }}">{{ item.0 }}</span>&nbsp;
+                    {% endif %}
+
+                {% endfor %}
+
+            {% else %}
+            {{ field.1.value }}
+            {% endif %}
+        <td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock %}
+

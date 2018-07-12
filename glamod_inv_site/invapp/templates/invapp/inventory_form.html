@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Create a new inventory record
+{% endblock %}
+
+{% block content %}
+    <h2>Add a record</h2>
+
+<form action="/invapp/add/" method="post">
+    {% csrf_token %}
+    {% crispy form %}
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
+

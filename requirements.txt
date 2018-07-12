@@ -1,0 +1,5 @@
+pip==10.0.1
+django==1.11.13
+psycopg2-binary==2.7.4
+stringcase
+django-crispy-forms==1.7.2
