@@ -17,7 +17,7 @@
   {% for record in records %}
     <tr>
         <td>
-            <a href='/invapp/record/{{ record.pk }}'>{{ record }}</a>
+            <a href='{% url 'record-view' 'inventory' record.pk %}'>{{ record }}</a>
             [<a href="/invapp/export/xml/{{ record.pk }}.xml">GEMINI2 / ISO19139 (XML)</a>]
        </td>
     </tr>

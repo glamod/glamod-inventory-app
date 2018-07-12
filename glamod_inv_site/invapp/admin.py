@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Inventory
+from .models import Inventory, Contact
 
 
 class InventoryAdmin(admin.ModelAdmin):
@@ -18,6 +18,10 @@ class InventoryAdmin(admin.ModelAdmin):
     formfield_overrides = {}
     readonly_fields = []
 
+class ContactAdmin(admin.ModelAdmin):
+    model = Contact
+
+
 
 admin.site.register(Inventory, InventoryAdmin)
-
+admin.site.register(Contact, ContactAdmin)

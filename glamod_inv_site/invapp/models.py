@@ -10,7 +10,17 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class Contact(models.Model):
+ 
+    name = models.CharField(max_length=256, verbose_name='Contact Name')
+    organisation = models.CharField(max_length=256, blank=True, null=True, verbose_name='Contact Organisation')
 
+    class Meta:
+        verbose_name = 'Contact'
+        app_label = 'invapp'
+
+    def __str__(self):
+        return '{} ({})'.format(self.name, self.organisation)
 
 class Inventory(models.Model):
 
@@ -18,7 +28,8 @@ class Inventory(models.Model):
     source_id = models.CharField(primary_key=True, max_length=256, verbose_name='Short name of source')
     product_id = models.CharField(max_length=256, blank=True, null=True, verbose_name='Id for source')
 
-    contact = models.TextField(blank=True, null=True, verbose_name='Contact details')  # This field type is a guess.
+#    contact = models.TextField(blank=True, null=True, verbose_name='Contact details')  # This field type is a guess.
+    contact = models.ForeignKey('Contact', blank=True, null=True, verbose_name='Contact')
     contact_role = models.TextField(blank=True, null=True)  # This field type is a guess.
     organisation = models.TextField(blank=True, null=True) 
 
@@ -55,3 +66,7 @@ class Inventory(models.Model):
     class Meta:
         verbose_name = 'Inventory'
         app_label = 'invapp'
+
+    def __str__(self):
+        return '{} ({})'.format(self.product_name, self.source_id)
+

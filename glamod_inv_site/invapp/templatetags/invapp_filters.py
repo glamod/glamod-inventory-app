@@ -13,7 +13,7 @@ _LIMIT = 20
 def _get_obj_link(obj, app_label):
     cls_name = obj.__class__.__name__.split(".")[-1]
     slug_name = stringcase.snakecase(cls_name)
-    return '/{}/{}s/{}/'.format(app_label, slug_name, obj.pk)
+    return '/{}/{}/{}'.format(app_label, slug_name, obj.pk)
 
 
 def _titlecamelcase(s):
@@ -108,3 +108,8 @@ def get_fields(obj):
 @register.filter
 def title_sentence_case(s):
     return stringcase.sentencecase(s).title() 
+
+
+@register.filter
+def to_class_name(obj):
+    return obj.__class__.__name__

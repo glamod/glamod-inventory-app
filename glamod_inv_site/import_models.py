@@ -10,3 +10,5 @@ from invapp.models import *
 x = Inventory.objects.first()
 print(x)
 print(x._meta)
+
+

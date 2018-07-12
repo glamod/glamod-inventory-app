@@ -10,22 +10,29 @@ print("Importing models...")
 from invapp.models import *
 
 
+def get_contact():
+    cnt, _ = Contact.objects.get_or_create(name='Fred', organisation='GREAT')
+    return cnt
+
+
 def add_record(**kwargs):
     keys = 'source_id product_id product_name product_code product_version product_uri ' \
            'description product_references product_citation source_format_version ' \
-           'source_file source_file_checksum data_centre_url contact contact_role ' \
+           'source_file source_file_checksum data_centre_url contact_role ' \
            'history comments timestamp bbox_min_latitude bbox_min_longitude ' \
            'bbox_max_latitude bbox_max_longitude start_date end_date total_station_count'.split()
 
     special_fields = {'timestamp': datetime.datetime.now(),
                       'data_centre_url': 'http://www.ceda.ac.uk',
-                      'bbox_min_latitude': -20, 
-                      'bbox_max_latitude': 20,
-                      'bbox_min_longitude': -20,
-                      'bbox_max_longitude': 20,
+                      'bbox_min_latitude': -20., 
+                      'bbox_max_latitude': 20.,
+                      'bbox_min_longitude': -20.,
+                      'bbox_max_longitude': 20.,
                       'start_date': datetime.datetime(1900, 1, 1),
                       'end_date': datetime.datetime(2018, 1, 1),
                       'total_station_count': 1234}
+
+    cnt = get_contact()
     values = []
 
     for key in keys:
@@ -40,7 +47,7 @@ def add_record(**kwargs):
 
         values.append(value)
 
-    items = dict([(keys[i], values[i]) for i in range(len(keys))])
+    items = dict([(keys[i], values[i]) for i in range(len(keys))] + [('contact', cnt)])
     inv = Inventory.objects.create(**items)
     print('Count: {}'.format(Inventory.objects.count()))
     return inv

@@ -2,8 +2,12 @@
 {% load invapp_filters %}
 
 {% block title %}
-    Record: {{ record }}
+    Record: {{ record|to_class_name }}
+
+    {% if record|to_class_name == 'Inventory' %}
     [<a href="/invapp/export/xml/{{ record.pk }}.xml">GEMINI2 / ISO19139 (xml)</a>]
+    {% endif %}
+
 {% endblock %}
 
 {% block content %}

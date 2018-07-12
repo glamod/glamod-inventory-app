@@ -18,9 +18,13 @@ def view_source_level_inventory(request):
                                'request': request})
 
 
-def view_record_html(request, record_id):
+def view_record_html(request, record_type, record_id):
+    record_type_map = {'inventory': Inventory,
+                       'contact': Contact}
+    model = record_type_map[record_type]
+
     return render_to_response('invapp/inventory_record.html',
-                              {'record': Inventory.objects.get(pk=record_id),
+                              {'record': model.objects.get(pk=record_id),
                                'request': request})
 
 
