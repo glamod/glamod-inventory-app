@@ -55,7 +55,7 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3
-glamod_site/glamod_site/settings_local.py
+glamod_inv_site/glamod_inv_site/settings_local.py
 
 # Flask stuff:
 instance/

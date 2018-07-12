@@ -18,7 +18,7 @@ class Inventory(models.Model):
     source_id = models.CharField(primary_key=True, max_length=256, verbose_name='Short name of source')
     product_id = models.CharField(max_length=256, blank=True, null=True, verbose_name='Id for source')
 
-    contact = models.TextField(blank=True, null=True)  # This field type is a guess.
+    contact = models.TextField(blank=True, null=True, verbose_name='Contact details')  # This field type is a guess.
     contact_role = models.TextField(blank=True, null=True)  # This field type is a guess.
     organisation = models.TextField(blank=True, null=True) 
 
