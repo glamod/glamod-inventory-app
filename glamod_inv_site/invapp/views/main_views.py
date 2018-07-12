@@ -23,7 +23,7 @@ def view_record_html(request, record_type, record_id):
                        'contact': Contact}
     model = record_type_map[record_type]
 
-    return render_to_response('invapp/inventory_record.html',
+    return render_to_response('invapp/record.html',
                               {'record': model.objects.get(pk=record_id),
                                'request': request})
 

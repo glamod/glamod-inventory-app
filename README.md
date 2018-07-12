@@ -6,3 +6,9 @@ Web-app for GLAMOD inventories.
 
 
 ## Usage
+
+Add some example data:
+
+```
+python add_data.py
+```
