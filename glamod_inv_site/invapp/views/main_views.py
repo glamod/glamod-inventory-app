@@ -7,6 +7,11 @@ from invapp.models import *
 from ..forms import InventoryForm
 
 
+def view_home(request):
+    return render_to_response('invapp/intro.html',
+                              {'request': request})
+
+
 def view_intro(request):
     return render_to_response('invapp/intro.html', 
                               {'request': request})
@@ -33,15 +38,18 @@ def get_inventory(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = InventoryForm(request.POST)
+
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
-            # ...
+            new_inv = Inventory.objects.create(**form.cleaned_data)
             # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
+            return HttpResponseRedirect('/invapp/inventory/{}'.format(new_inv.pk))
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = InventoryForm()
 
     return render(request, 'invapp/inventory_form.html', {'form': form})
+
+

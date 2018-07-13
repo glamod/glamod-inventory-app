@@ -28,25 +28,26 @@ $(function () {
 
 {% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">GLAMOD Inventory App</a>
+  <a class="navbar-brand" href="/invapp/intro">GLAMOD Inventory App</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/invapp/intro">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link 1</a>
+        <a class="nav-link" href="/invapp/inventory/add/">Add a record</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Drop-down 
+          Inventories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Item 1</a>
-          <a class="dropdown-item" href="#">Item 2</a>
+          <a class="dropdown-item" href="#">High-level inventory</a>
+          <a class="dropdown-item" href="/invapp/inventories/source-level">Source-level inventory</a>
+          <a class="dropdown-item" href="/invapp/inventories/station-level">Station-level inventory</a>
         </div>
       </li>
     </ul>
