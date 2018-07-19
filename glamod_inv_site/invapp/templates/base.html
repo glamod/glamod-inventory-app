@@ -25,7 +25,7 @@ $(function () {
 </head>
 
 <body style="margin: 10px;">
-
+<div class="container-fluid">
 {% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/invapp/intro">GLAMOD Inventory App</a>
@@ -58,9 +58,39 @@ $(function () {
   </form>
 </nav>
 {% endblock %}
-<h1>{% block title %} __TITLE_GOES_HERE__ {% endblock %}</h1>
 
-{% block content %}
-{% endblock %}
-
+    <div class="row">
+        <div class="col-sm-1">
+            {% block sidebar %}
+            <nav class="sidebar bg-light">
+                <h4 class="nav">Contacts</h4>
+                <a class="nav-link" href="/invapp/contact/" data-toggle="tooltip" data-placement="right" title="View all contacts">View</a>
+                <a class="nav-link" href="/invapp/contact/add/" data-toggle="tooltip" data-placement="right" title="Add single contact via form">Add</a>
+                <a class="nav-link" href="/invapp/contact/upload/" data-toggle="tooltip" data-placement="right" title="Upload multiple contacts from csv">Upload</a>
+                <a class="nav-link" href="/invapp/contact/edit/" data-toggle="tooltip" data-placement="right" title="Edit single contact">Edit</a>
+                <a class="nav-link" href="" data-toggle="tooltip" data-placement="right" title="Export all contacts to csv">Export</a>
+                <a class="nav-link" href="" data-toggle="tooltip" data-placement="right" title="Search contacts">Search</a>
+                <h4>Source</h4>
+                <a class="nav-link" href="/invapp/inventory/" data-toggle="tooltip" data-placement="right" title="View all source records">View</a>
+                <a class="nav-link" href="/invapp/inventory/nuim/" data-toggle="tooltip" data-placement="right" title="View all source records">NUIM View</a>
+                <a class="nav-link" href="/invapp/inventory/add/" data-toggle="tooltip" data-placement="right" title="Add single source record">Add</a>
+                <a class="nav-link" href="/invapp/inventory/upload/" data-toggle="tooltip" data-placement="right" title="Upload multiple source records from Excel file">Upload</a>
+                <a class="nav-link" href="/invapp/inventory/edit/" data-toggle="tooltip" data-placement="right" title="Edit single source record">Edit</a>
+                <a class="nav-link" href="" data-toggle="tooltip" data-placement="right" title="Export all source records to csv">Export</a>
+                <a class="nav-link" href="" data-toggle="tooltip" data-placement="right" title="Search sources">Search</a>
+                <h4>Vocabulary</h4>
+                <a class="nav-link" href="" data-toggle="tooltip" data-placement="right" title="">Role</a>
+                <a class="nav-link" href="" data-toggle="tooltip" data-placement="right" title="">Spatial domain</a>
+                <a class="nav-link" href="" data-toggle="tooltip" data-placement="right" title="">Geometry type</a>
+                <a class="nav-link" href="" data-toggle="tooltip" data-placement="right" title="">CRS</a>
+            </nav>
+            {% endblock %}
+        </div>
+        <div class="col-sm-11">
+            <h1>{% block title %} __TITLE_GOES_HERE__ {% endblock %}</h1>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
 </html>

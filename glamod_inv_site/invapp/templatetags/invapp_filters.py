@@ -66,6 +66,18 @@ def _get_reverse_fk_set(obj, field_name):
     return 'Related {}s'.format(display_name), {'pk_url_list': pk_url_list}
 
 
+
+@register.filter
+def get_field_names(obj):
+    field_names = [field.name for field in obj._meta.get_fields()]
+    return field_names
+
+@register.filter
+def get_all(obj):
+    return obj.all()
+
+
+
 @register.filter
 def get_fields(obj):
     app_label = obj._meta.app_label

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    The GLAMOD Inventory App
+{% endblock %}
+
+{% block content %}
+    <p>Use this page to upload xls file containing list of sources</p>
+    {% csrf_token %}
+    {% crispy form %}
+{% endblock %}
