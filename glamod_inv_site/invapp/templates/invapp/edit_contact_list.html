@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load invapp_filters %}
+
+{% block title %}
+    {{ obj|to_class_name }}: Edit
+{% endblock %}
+
+{% block content %}
+    <p>Select contact to edit</p>
+    <ul>
+    {% for record in obj|get_all %}
+    <li><a href="/invapp/contact/edit/{{record.pk}}">{{record}}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
