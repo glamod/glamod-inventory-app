@@ -12,6 +12,7 @@ from django import forms
 from datetime import datetime
 from django.utils import timezone
 from uuid import uuid4
+from tinymce import models as tinymce_models
 
 
 
@@ -191,7 +192,8 @@ class Inventory(models.Model):
     contact_metadata      = models.ForeignKey('Contact', blank=True, null=True, verbose_name='Contact (for metadata)', related_name = 'contact_data', on_delete=models.SET_NULL)  # | contact
     contact_role_metadata = models.ForeignKey('Role', blank=True, null=True, verbose_name='Role (for metadata contact)', related_name = 'contact_role_data', on_delete=models.SET_NULL) # | contact_role
 
-    description        = models.TextField(blank=True, null=True, verbose_name = 'Descripton / abstract') #  | description # change to tinyMCE editor?
+    #description        = models.TextField(blank=True, null=True, verbose_name = 'Descripton / abstract') #  | description # change to tinyMCE editor?
+    description = tinymce_models.HTMLField(blank=True, null=True, verbose_name='Descripton / abstract')  # | description # change to tinyMCE editor?
     product_references = models.TextField(blank=True, null=True, verbose_name = 'Papers / references describing the data') # | product_references # link table?
     product_citation   = models.TextField(blank=True, null=True, verbose_name = 'Product citation (how to cite this data)') # | product_citation # text to be used for citing this source
 

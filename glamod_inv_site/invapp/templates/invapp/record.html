@@ -42,7 +42,11 @@
                 {% endfor %}
 
             {% else %}
-            {{ field.1.value }}
+                {% if field.0 == 'description' %}
+                    {{ field.1.value | safe }}
+                {% else %}
+                    {{ field.1.value }}
+                {% endif %}
             {% endif %}
         <td>
     </tr>

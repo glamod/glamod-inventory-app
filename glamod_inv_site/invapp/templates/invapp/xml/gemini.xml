@@ -116,7 +116,9 @@
                 </gmd:CI_Citation>
             </gmd:citation>
             <gmd:abstract>
-                <gco:CharacterString>{{ source.description }}</gco:CharacterString>
+                <gco:CharacterString>
+                    <![CDATA[ {{ source.description }} ]]>
+                 </gco:CharacterString>
             </gmd:abstract>
             <gmd:pointOfContact>
                 <gmd:CI_ResponsibleParty>
