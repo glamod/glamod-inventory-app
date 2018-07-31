@@ -66,9 +66,15 @@ def _get_reverse_fk_set(obj, field_name):
     return 'Related {}s'.format(display_name), {'pk_url_list': pk_url_list}
 
 
-
 @register.filter
 def get_field_names(obj):
+    field_names = [field.name for field in obj._meta.fields
+                   if not isinstance(field, models.ForeignKey)]
+    return field_names
+
+
+@register.filter
+def get_field_names_rfk(obj):
     field_names = [field.name for field in obj._meta.get_fields()]
     return field_names
 
@@ -76,10 +82,29 @@ def get_field_names(obj):
 def get_all(obj):
     return obj.all()
 
+@register.filter
+def get_fields(obj):
+    app_label = obj._meta.app_label
+    field_names = [field.name for field in obj._meta.fields
+                   if not isinstance( field , models.ForeignKey )]
+    fields = []
+    for field_name in field_names:
+        display_name = field_name
+        value = getattr(obj, field_name, "-")
+        # check if pk
+        if field_name == obj._meta.pk.name and ( isinstance(obj, Inventory) or isinstance(obj, Contact)):
+            cls_name = obj.__class__.__name__.split(".")[-1]
+            slug_name = stringcase.snakecase(cls_name)
+            url = '/{}/{}/{}'.format(app_label, slug_name, value)
+            resp = {'value': value, 'url': url}
+        else:
+            resp = {'value': value}
+        fields.append((display_name, resp))
+    return fields
 
 
 @register.filter
-def get_fields(obj):
+def get_fields_rfk(obj):
     app_label = obj._meta.app_label
     field_names = [field.name for field in obj._meta.get_fields()]
 

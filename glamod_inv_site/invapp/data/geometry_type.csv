@@ -1,0 +1,7 @@
+id	identifier	description
+0	vector	vector data is used to represent geographic data
+1	grid	grid data is used to represent geographic data
+2	textTable	textTable
+3	tin	triangulated irregular network
+4	stereoModel	three-dimensional view formed by the intersecting homologous rays of an overlapping pair of images
+5	video	scene from a video recording

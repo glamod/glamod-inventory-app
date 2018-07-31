@@ -1,0 +1,13 @@
+id	identifier	description
+0	continual	data is repeatedly and frequently updated
+1	daily	data is updated each day
+2	weekly	data is updated on a weekly basis
+3	fortnightly	data is updated every two weeks
+4	monthly	data is updated each month
+5	quarterly	data is updated every three months
+6	biannually	data is updated twice each year
+7	annually	data is updated every year
+8	asNeeded	data is updated as deemed necessary
+9	irregular	data is updated in intervals that are uneven in duration
+10	notPlanned	there are no plans to update the data
+11	unknown	frequency of maintenance for the data is not known

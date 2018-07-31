@@ -47,7 +47,15 @@
         <td>
     </tr>
     {% endfor %}
-
+    {% if history %}
+        <tr><th scope="row">History</th>
+            <td>
+            {% for hist in history %}
+                {{ hist.history }}<br>
+            {% endfor %}
+            </td>
+        </tr>
+    {% endif %}
   </tbody>
 </table>
 

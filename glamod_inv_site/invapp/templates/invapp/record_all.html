@@ -27,7 +27,13 @@
     {% for record in obj|get_all %}
     <tr>
         {% for field in record|get_fields %}
-        <td>{{ field.1.value }}</td>
+        <td>
+            {% if field.1.url %}
+            <a href="{{ field.1.url }}">{{ field.1.value }}</a>
+            {% else %}
+            {{ field.1.value }}
+            {% endif %}
+        </td>
         {% endfor %}
     </tr>
     {% endfor %}

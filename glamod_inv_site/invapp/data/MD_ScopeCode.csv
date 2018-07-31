@@ -1,0 +1,17 @@
+id	entry	description
+0	attribute	information applies to the attribute class
+1	attributeType	information applies to the characteristic of a feature
+2	collectionHardware	information applies to the collection hardware class
+3	collectionSession	information applies to the collection session
+4	dataset	information applies to the dataset
+5	series	information applies to the series
+6	nonGeographicDataset	information applies to non-geographic data
+7	dimensionGroup	information applies to a dimension group
+8	feature	information applies to a feature
+9	featureType	information applies to a feature type
+10	propertyType	information applies to a property type
+11	fieldSession	information applies to a field session
+12	software	information applies to a computer program or routine
+13	service	information applies to a capability which a service provider entity makes available to a service user entity through a set of interfaces that define a behaviour, such as a use case
+14	model	information applies to a copy or imitation of an existing or hypothetical object
+15	tile	information applies to a tile, a spatial subset of geographic data
