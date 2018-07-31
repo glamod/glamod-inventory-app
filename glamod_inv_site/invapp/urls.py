@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^contact/edit/', invapp.views.main_views.edit_contact_list, name='edit-contact-list'),
     url(r'^contact/upload/$', invapp.views.main_views.upload_contacts, name='upload-contacts'),
     url(r'^export/xml/(?P<record_id>.+)\.xml$', invapp.views.main_views.view_gemini_xml),
+    url(r'^validate/xml/(?P<record_id>.+)$', invapp.views.main_views.validate_gemini_xml),
     url(r'^intro', invapp.views.main_views.view_intro),
     url(r'^home', invapp.views.main_views.view_home),
     url(r'^(?P<record_type>.+)/(?P<record_id>.+)/?$', invapp.views.main_views.view_record_html, name='record-view'),

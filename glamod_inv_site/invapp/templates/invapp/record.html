@@ -6,6 +6,7 @@
 
     {% if record|to_class_name == 'Inventory' %}
     [<a href="/invapp/export/xml/{{ record.pk }}.xml">GEMINI2 / ISO19139 (xml)</a>]
+    [<a href="/invapp/validate/xml/{{ record.pk }}">Validate ISO19139</a>]
     {% endif %}
 
 {% endblock %}

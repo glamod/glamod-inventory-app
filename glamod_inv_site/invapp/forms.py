@@ -232,3 +232,16 @@ class InventoryHistoryForm( forms.ModelForm ):
     class Meta:
         model = InventoryHistory
         exclude = ['date','action']
+
+class GeminiValidate( forms.Form ):
+    input = forms.CharField(widget=forms.Textarea)
+    def __init__(self, *args, **kwargs):
+        super(GeminiValidate, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-exampleForm'
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'POST'
+        self.helper.form_tag = False
+
+    class Meta:
+        exclude = ''

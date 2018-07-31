@@ -10,7 +10,7 @@ from io import StringIO, BytesIO
 import pandas
 
 from ..forms import InventoryForm, ContactForm, UploadContactForm, UploadInventoryForm
-from ..forms import InventoryHistoryForm
+from ..forms import InventoryHistoryForm, GeminiValidate
 
 # =================================================================
 # Contacts
@@ -231,12 +231,29 @@ def edit_inventory_list(request):
 # -------------------------------------
 def view_gemini_xml( request , record_id ):
     inventory = Inventory.objects.get( pk = record_id )
-    print( inventory.timestamp )
-    print( record_id )
     meta_contact = Inventory.objects.select_related('contact_metadata').get( pk = record_id )
     data_contact = Inventory.objects.select_related('contact_data').get( pk = record_id )
     dct = { 'source': inventory, 'meta_contact': meta_contact.contact_metadata, 'data_contact': data_contact.contact_data }
-    return render_to_response("invapp/xml/gemini.xml", dct, content_type="text/xml;")
+    r = render(request,"invapp/xml/gemini.xml", dct, content_type="text/xml;")
+    print (r.content )
+    #return HttpResponseRedirect('http://www.google.com')
+    return r # render(request,"invapp/xml/gemini.xml", dct, content_type="text/xml;")
+
+
+
+def validate_gemini_xml( request, record_id ):
+    inventory = Inventory.objects.get(pk=record_id)
+    meta_contact = Inventory.objects.select_related('contact_metadata').get(pk=record_id)
+    data_contact = Inventory.objects.select_related('contact_data').get(pk=record_id)
+    dct = {'source': inventory, 'meta_contact': meta_contact.contact_metadata,
+           'data_contact': data_contact.contact_data}
+    r = render(request, "invapp/xml/gemini.xml", dct, content_type="text/xml;")
+
+    form = GeminiValidate(initial={'input': str(r.content,'utf-8') })
+
+    return render(request, 'invapp/gemini_validate.html',
+                  {'form': form})
+
 # =================================================================
 #def get_inventory(request):
 #    # if this is a POST request we need to process the form data
